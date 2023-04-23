@@ -1,12 +1,14 @@
-1.What does the simple List component do?
+#Question 1. What does the simple List component do?
 The List component is a React component that receives an array of items as a prop and renders them as a list. Each item in the list is a SingleListItem component that displays the text of the item and changes its background color to green when it's selected.
 The component keeps track of the selected index using the state hook, and updates it when an item is clicked. When the items prop changes, the component resets the selected index to null using the useEffect hook.
-2. What problems / warnings are there with the code?
+
+#Question 2. What problems / warnings are there with the code?
 There are a few issues with the code:
 * The setSelectedIndex function is being used incorrectly. Instead of passing the new state value to the function, it's being called with a function that returns the value. This can lead to unexpected behavior and should be fixed.
 * The PropTypes for the items prop are incorrect. The array type should be defined as PropTypes.arrayOf, not PropTypes.array. Additionally, the shapeOf function should be replaced with shape.
 * The isSelected prop passed to the SingleListItem component is always truthy because it's being set to the selectedIndex state variable, which is a number. Instead, it should be set to a boolean that indicates whether the item is selected or not.
-3. Please fix, optimize, and/or modify the component as much as you think is necessary.
+
+#Question 3. Please fix, optimize, and/or modify the component as much as you think is necessary.
 Here's an updated version of the List component that fixes the issues mentioned above and makes a few other optimizations:
 import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
@@ -60,6 +62,7 @@ text: PropTypes.string.isRequired,
 List.defaultProps = {
 items: null,
 };
+
 The changes made to the component are:
 * The setSelectedIndex function is now being called correctly, with the new state value as an argument.
 * The PropTypes for the items prop now use the arrayOf and shape functions correctly.
